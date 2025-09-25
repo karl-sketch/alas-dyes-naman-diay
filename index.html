@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ani bajud basta gabie na? </title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .video-container {
+      position: relative;
+      width: 90%;
+      max-width: 400px; /* Portrait width */
+      aspect-ratio: 9 / 16; /* Portrait ratio */
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    /* Overlay gradient */
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7));
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px;
+      color: #fff;
+    }
+
+    .overlay h1 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 10px;
+      padding: 8px 14px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 14px;
+      backdrop-filter: blur(6px);
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: rgba(255,255,255,0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="video-container">
+    <video id="myVideo" autoplay muted loop playsinline>
+      <source src="/SaveTik.co_7545497368695688456-hd.mp4" type="video/mp4">
+      
+    </video>
+    <div class="overlay">
+      <h1>Lamig</h1>
+      <div class="controls">
+        <button class="btn" id="playPause">Pause</button>
+        <button class="btn" id="muteUnmute">Unmute</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const video = document.getElementById("myVideo");
+    const playPauseBtn = document.getElementById("playPause");
+    const muteUnmuteBtn = document.getElementById("muteUnmute");
+
+    playPauseBtn.addEventListener("click", () => {
+      if (video.paused) {
+        video.play();
+        playPauseBtn.textContent = "Pause";
+      } else {
+        video.pause();
+        playPauseBtn.textContent = "Play";
+      }
+    });
+
+    muteUnmuteBtn.addEventListener("click", () => {
+      video.muted = !video.muted;
+      muteUnmuteBtn.textContent = video.muted ? "Unmute" : "Mute";
+    });
+  </script>
+</body>
+</html>
